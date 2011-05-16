@@ -5,7 +5,7 @@ require "bdd-legacy/version"
 Gem::Specification.new do |s|
 
   s.add_dependency "rake"
-  s.add_dependency "bundler", "~> 1.0" 
+  s.add_dependency "bundler", "~> 1.0.9" 
   s.add_dependency "fakeweb", "~> 1.3" 
   s.add_dependency "rake", ">= 0.8" 
   s.add_dependency "rdoc", "~> 2.5" 
