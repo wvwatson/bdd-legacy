@@ -1,0 +1,30 @@
+After('@sql_insert_example') do |s|
+  delete_message
+end
+
+# This is an example.  If you need to do setup and teardown data in your database
+# obviously you'll have your own table replace 'messages' below
+def insert_message()
+  insertsql||=[]
+  insertsql[0]= <<-eos
+            INSERT INTO [Messages]
+           ([Message])
+     VALUES
+           ('Heyas')          
+     eos
+     
+  insertsql[1]=  'select @@IDENTITY'
+  
+  results, field_lists = SqlServer.helperqueries(insertsql)
+
+  @insertID = results[1][0][0] #get *first* result from *second* query
+end
+
+def delete_message
+ result = SqlServer.helperquery("delete from Messages where Messageid = #{@insertID}")  
+end
+
+Given /^I have a message that says "([^"]*)" waiting for me$/ do |arg1|
+  insert_message
+end
+

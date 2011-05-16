@@ -1,0 +1,13 @@
+Feature: Login
+  In order to log into my app
+  As my app's personnel
+  I want to put in my user name and password
+  
+  @firefox
+  Scenario: Log in
+    Given I enter my username
+    And I enter my password
+    When I press Continue
+    Then I should see the environment link 
+    And I select the environment link    
+   

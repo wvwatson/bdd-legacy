@@ -1,0 +1,66 @@
+Before('@firefox') do
+
+  Capybara.app_host = $workingAppHostLink
+
+  Capybara.current_driver = :selenium_firefox
+  visit $workingAppLoginRoute
+
+end
+
+After('@firefox') do
+  Capybara.use_default_driver
+end
+
+Before('@ie') do
+  Capybara.app_host = $workingAppHostLink 
+  Capybara.current_driver = :selenium_ie
+  visit $workingAppLoginRoute
+end
+
+After('@ie') do
+  Capybara.use_default_driver
+end
+
+When /^I press "([^"]*)"$/ do |arg1|
+  continue = find_by_id arg1
+  continue.click
+end
+
+#example of making something ie specific
+Given /^I press "([^"]*)" in internet explorer$/ do |arg1|
+  mybutton = find_button arg1
+  mybutton.click
+end
+
+Then /^I select the link "([^"]*)"$/ do |arg1|
+  click_link arg1
+end
+
+
+Then /^I should see "([^"]*)"$/ do |arg1|
+  page.should have_content(arg1)
+end
+
+Then /^I should not see "([^"]*)"$/ do |arg1|
+    page.should_not have_content(arg1)
+end
+
+Given /^I evaluate the script for "([^"]*)"$/ do |arg1|
+  page.evaluate_script arg1
+end
+
+# popup example
+Then /^within the "([^"]*)" window, I should see "([^"]*)"$/ do |arg1, arg2|
+  page.within_window(arg1){page.should have_content(arg2)}
+end
+
+Then /^within the "([^"]*)" window, I select "([^"]*)"$/ do |arg1, arg2|
+  page.within_window(arg1) do 
+    myelem = page.find(:xpath, "//*[@value='#{arg2}']")
+    myelem.click
+  end
+end
+
+Then /^I should see "([^"]*)" in a field$/ do |arg1|
+  page.should have_xpath("//*[@value='#{arg1}']")
+end

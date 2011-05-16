@@ -1,0 +1,84 @@
+#!/user/bin/env ruby
+
+require 'thor'
+require 'thor/group'
+
+class BddLegacy < Thor::Group
+  include Thor::Actions
+
+  # Define arguments and options
+  argument :name
+  # class_option :test_framework, :default => :test_unit
+
+  def self.source_root
+    File.dirname(__FILE__)
+  end
+
+  def create_rake_file
+    template('templates/rakefile.tt', "#{name}/rakefile.rb")
+  end
+
+  def create_example_feature_file
+    template('templates/additions_feature.tt', "#{name}/features/additions.feature")
+  end   
+  
+  def create_login_feature_file
+    template('templates/login_feature.tt', "#{name}/features/login.feature")
+  end  
+
+  def create_landing_page_feature_file
+    template('templates/landing_page_feature.tt', "#{name}/features/landing_page.feature")
+  end
+  
+  def create_generic_steps_file
+    template('templates/generic_browser_steps.tt', "#{name}/features/step_definitions/generic_browser_steps.rb")
+  end
+
+  def create_login_steps_file
+    template('templates/login_steps.tt', "#{name}/features/step_definitions/login_steps.rb")
+  end   
+
+  def create_landing_page_steps_file
+    template('templates/landing_page_steps.tt', "#{name}/features/step_definitions/landing_page_steps.rb")
+  end   
+  
+  def create_example_steps_file
+    template('templates/addition_steps.tt', "#{name}/features/step_definitions/addition_steps.rb")
+  end    
+
+  def create_env_file
+    template('templates/env.tt', "#{name}/features/support/env.rb")
+  end   
+
+  def create_sqlserver_file
+    template('templates/sqlserver.tt', "#{name}/lib/sqlserver.rb")
+  end  
+
+  def create_sqlserver_wrapper_file
+    template('templates/sqlhelper.tt', "#{name}/lib/sqlhelper.rb")
+  end    
+  
+  def create_example_code_file
+    template('templates/calculator.tt', "#{name}/lib/calculator.rb")
+  end  
+  
+  # def create_feature_file
+    # template('templates/features.tt', "#{name}/lib/#{name}.rb")
+  # end  
+  
+  # def create_test_file
+    # test = options[:test_framework] == "rspec" ? :spec : :test
+    # create_file "#{name}/#{test}/#{name}_#{test}.rb"
+  # end
+
+  # def copy_licence
+    # if yes?("Use MIT license?")
+      # Make a copy of the MITLICENSE file at the source root
+      # copy_file "MITLICENSE", "#{name}/MITLICENSE"
+    # else
+      # say "Shame on you…", :red
+    # end
+  # end
+end
+
+BddLegacy.start

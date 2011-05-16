@@ -1,0 +1,23 @@
+Feature: Landing Page
+  In order to work in my app
+  As my app's personnel
+  I need to land on the home page
+  
+  @firefox
+  Scenario: Land on the landing page page
+    Given I am logged in
+    Then I should see "My App's greeting"    
+    And I should see "Something Else that I want to check"
+    
+  @firefox  @sql_insert_example
+  Scenario: Landing page messages
+    Given I am logged in
+    And I have a message that says "Heyas" waiting for me
+    Then I should see "Heyas"    
+    
+  @ie  @sql_insert_example
+  Scenario: Delete Home page messages
+    Given I have a message that says "Heyas" waiting for me
+    And I am logged in
+    And I press "Remove" in internet explorer
+    Then I should not see "Heyas"    
