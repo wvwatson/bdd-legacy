@@ -35,11 +35,11 @@ Gem::Specification.new do |s|
   s.name        = "bdd-legacy"
   s.version    = Bdd::Legacy::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["TODO: Write your name"]
-  s.email       = ["TODO: Write your email address"]
+  s.authors     = ["Wavell Watson"]
+  s.email       = ["wavel.watson@gmail.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Installs tools needed for bdd testing of legacy applications.}
+  s.description = %q{Allows for use of feature driven testing of legacy (especially sql server) applications.}
 
   s.rubyforge_project = "bdd-legacy"
 
