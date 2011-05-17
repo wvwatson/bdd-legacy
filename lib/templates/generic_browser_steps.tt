@@ -64,3 +64,20 @@ end
 Then /^I should see "([^"]*)" in a field$/ do |arg1|
   page.should have_xpath("//*[@value='#{arg1}']")
 end
+
+Then /^I should see "([^"]*)" in a dropdown$/ do |arg1|
+  page.should have_xpath ("//option[text()='#{arg1}']")
+end
+
+Then /^I select "([^"]*)" from a dropdown$/ do |arg1|
+  # debugger
+  myselect = page.find(:xpath, "//select[option[text()='#{arg1}']]")
+  myoption = page.find(:xpath, "//option[text()='#{arg1}']")
+  # select(myoption, :from => myselect)
+  # select("#{arg1}")
+  myoption.select_option
+end
+
+Then /^I should not see "([^"]*)" in a dropdown$/ do |arg1|
+  page.should_not have_xpath ("//option[text()='#{arg1}']")
+end
