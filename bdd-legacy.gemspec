@@ -19,8 +19,8 @@ Gem::Specification.new do |s|
   s.add_dependency "gherkin", ">= 2.3.5" 
   s.add_dependency "json", ">= 1.4.6" 
   s.add_dependency "nokogiri", ">= 1.4.4" 
-  s.add_dependency "prawn", "= 0.8.4" 
-  s.add_dependency "prawn-layout", "= 0.8.4" 
+  s.add_dependency "prawn", ">= 0.8.4" 
+  s.add_dependency "prawn-layout", ">= 0.8.4" 
   s.add_dependency "rack-test", ">= 0.5.7" 
   s.add_dependency "rake", ">= 0.8.7" 
   s.add_dependency "ramaze", ">= 0" 
@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.add_dependency "syntax", ">= 1.0.0" 
   s.add_dependency "term-ansicolor", ">= 1.0.5" 
   s.add_dependency "webrat", ">= 0.7.3" 
-  s.add_dependency "cucumber", "= 0.10.2" 
+  s.add_dependency "cucumber", ">= 0.10.2" 
   
   s.name        = "bdd-legacy"
   s.version    = Bdd::Legacy::VERSION
