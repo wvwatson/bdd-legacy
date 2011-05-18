@@ -37,8 +37,6 @@ Change the rest of the defaults if needed
 # change to :test or :dev or :local
 $currentOpt=:local
 
-#TODO change strings to import from yaml file
-#TODO exclude yaml file from check-in
 # the below server name will either be in the format of 'MYSERVERNAME' or 'MYSERVERNAME\DATABASEINSTANCE'
 # depending on how your sql servr is set up
 workingDBServerOpt={:dev => 'MYDEVDATABASESERVER',
