@@ -23,6 +23,7 @@ bdd-legacy mylegacyapp
 ```
 
 Edit the env.rb file and point it to your application's domain name and url
+
 ``` ruby
 # Change this to the domain of your web server.  Don't add the full url
 $workingAppHostLink='http://localhost'
@@ -31,6 +32,7 @@ $workingAppLoginRoute='/welcome/logon.asp'
 ```
 
 Change the rest of the defaults if needed
+
 ``` ruby
 # change to :test or :dev or :local
 $currentOpt=:local
@@ -57,6 +59,5 @@ $workingAppUser='myapplicationusername'
 $workingAppPW='myapplicationpw'           
 $workingDBUser='mydatabaseusername'
 $workingDBPW='mydatabasepw'
-
 ```
 
