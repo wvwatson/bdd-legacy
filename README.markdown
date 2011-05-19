@@ -3,7 +3,9 @@ Behavior Driven Legacy Testing
 
 **Why would you want to test a legacy system, such as a classic Asp application?**
 
-*So that you can modify it safely* 
+One reason would be so that you could modify it safely.  A BDD approach to legacy maintenance also lets 
+you rewrite a system piece by piece.  Since in many instances the *system is the spec*, you would do well
+to document whatever you touch since you usually own that code afterwards. 
 
 
 **Requirements**
@@ -25,10 +27,11 @@ bdd-legacy mylegacyapp
 ```
 **Specifiy Url**
 
-Edit the env.rb file and point it to your application's domain name and url
+Edit the *env.rb* file and point it to your application's domain name and url
 Note: this can be a non-local url
 
 ``` ruby
+#/features/support/env.rb
 # Change this to the domain of your web server.  Don't add the full url
 $workingAppHostLink='http://localhost'
 # add the url of your login page
