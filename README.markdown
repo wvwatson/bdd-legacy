@@ -1,12 +1,12 @@
 Behavior Driven Legacy Testing
---------------------------------------------------------
+===============================
 Why would you want to test a legacy system, such as a classic Asp application?  
---------------------------------------------------------
+------------------------------------------------------------------------------
 *So that you can modify it safely*
 --------------------------------------------------------
 
 Requirements:
-  You must have ruby and rubygems
+  You must have [ruby](http://www.ruby-lang.org/en/downloads/) and [rubygems](http://rubyforge.org/frs/?group_id=126)
 
 Installation
 
@@ -29,6 +29,19 @@ Edit the env.rb file and point it to your application's domain name and url
 $workingAppHostLink='http://localhost'
 # add the url of your login page
 $workingAppLoginRoute='/welcome/logon.asp'
+```
+
+If you have a log in page, edit your the login_steps.rb file and change the *fill in* function 
+to be the name/id of yourusername and password fields on your log in page
+
+``` ruby
+Given /^I enter my username$/ do
+    fill_in 'Username', :with => $workingAppUser
+end
+
+Given /^I enter my password$/ do
+  fill_in 'Password', :with => $workingAppPW
+end
 ```
 
 Change the rest of the defaults if needed

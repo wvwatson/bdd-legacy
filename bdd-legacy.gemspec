@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Wavell Watson"]
   s.email       = ["wavel.watson@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/wavell2003/bdd-legacy"
   s.summary     = %q{Installs tools needed for bdd testing of legacy applications.}
   s.description = %q{Allows for use of feature driven testing of legacy (especially sql server) applications.}
 
