@@ -42,7 +42,7 @@ $workingAppLoginRoute='/welcome/logon.asp'
 **Specify login steps**
 
 If you have a log in page, edit your the **login_steps.rb** file and change the **fill in** function 
-to be the name/id of your username and password **fields** on your log in page
+to be the *html* name/id of your username and password **fields** on your log in page
 
 ``` ruby
 #/features/step_definitions/login_steps
@@ -57,7 +57,7 @@ end
 **Username/Password**
 
 Change the application's user id and password in your *env.rb* file.
-This will get put into the fields previously mentioned
+These will get put into the fields previously mentioned
 
 ``` ruby
 #/features/support/env.rb
