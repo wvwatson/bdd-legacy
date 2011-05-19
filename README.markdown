@@ -65,15 +65,20 @@ $workingAppUser='myapplicationusername'
 $workingAppPW='myapplicationpw'
 ```
 
-A feature is executable documentation.  *What is the benefit of executable documentation?*  
-Well with a feature you could cut and paste the *test* in an email and send it to a 
-business expert.  This means that there will be less opportunity for something to get 
-lost in the translation between your expert's statements and the implementation of those
-statments in code.
+A feature is executable documentation. 
+ 
+*What is the benefit of[executable documentation?](http://www.literateprogramming.com/index.html)*
+
+Well with a feature you could cut and paste the [test](http://www.literateprogramming.com/quotes_ad.html) 
+in an email and send it to a business expert.  This means that there would be less 
+opportunity for something to get lost in the translation between your expert's statements 
+and the implementation of those statments in code.
 
 Take a look at the login feature:
 
 ``` ruby
+#/features/login.feature
+
 Feature: Login
   In order to log into my app
   As my app's personnel
