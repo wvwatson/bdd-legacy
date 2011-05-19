@@ -4,8 +4,9 @@ Behavior Driven Legacy Testing
 **Why would you want to test a legacy system, such as a classic Asp application?**
 
 One reason would be so that you could modify it safely.  A BDD approach to legacy maintenance also lets 
-you rewrite a system piece by piece.  Since in many instances the *system is the spec*, you would do well
-to document whatever you touch since you usually own that code afterwards. 
+you rewrite a system piece by piece.  In many instances the *system is the spec*. This means you would do well
+to document whatever you touch since you usually own that code afterwards.  BDD provides the best form of
+documentation I know of in the form of *executable documentation*.  
 
 
 **Requirements**
@@ -52,6 +53,16 @@ end
 Given /^I enter my password$/ do
   fill_in 'Password', :with => $workingAppPW
 end
+```
+**Username/Password**
+
+Change the application's user id and password in your *env.rb* file.
+This will get put into the fields previously mentioned
+
+``` ruby
+#/features/support/env.rb
+$workingAppUser='myapplicationusername'
+$workingAppPW='myapplicationpw'
 ```
 
 **Change the rest of the defaults if needed**
