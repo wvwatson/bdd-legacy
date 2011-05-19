@@ -65,9 +65,9 @@ $workingAppUser='myapplicationusername'
 $workingAppPW='myapplicationpw'
 ```
 
-A feature is executable documentation. 
+**A feature is executable documentation.** 
  
-*What is the benefit of[executable documentation?](http://www.literateprogramming.com/index.html)*
+*What is the benefit of [executable documentation?](http://www.literateprogramming.com/index.html)*
 
 Well with a feature you could cut and paste the [test](http://www.literateprogramming.com/quotes_ad.html) 
 in an email and send it to a business expert.  This means that there would be less 
@@ -84,7 +84,6 @@ Feature: Login
   As my app's personnel
   I want to put in my user name and password
   
-  @firefox
   Scenario: Log in
     Given I enter my username
     And I enter my password
@@ -92,6 +91,11 @@ Feature: Login
     Then I should see the environment link 
     And I select the environment link
 ```
+
+Even without any [further explanation](https://github.com/cucumber/cucumber/wiki/Gherkin), 
+(if you know english) you should be able to read and understand the above statements very,
+very, easily.  This means your business experts can *at least be able to read* your code.
+And yes, that is code.
 
 **Change the rest of the defaults if needed**
 
