@@ -45,7 +45,7 @@ If you have a log in page, edit your the **login_steps.rb** file and change the 
 to be the *html* name/id of your username and password **fields** on your log in page
 
 ``` ruby
-#/features/step_definitions/login_steps
+#/features/step_definitions/login_steps.rb
 Given /^I enter my username$/ do
     fill_in 'Username', :with => $workingAppUser
 end
@@ -65,14 +65,37 @@ $workingAppUser='myapplicationusername'
 $workingAppPW='myapplicationpw'
 ```
 
+A feature is executable documentation.  *What is the benefit of executable documentation?*  
+Well with a feature you could cut and paste the *test* in an email and send it to a 
+business expert.  This means that there will be less opportunity for something to get 
+lost in the translation between your expert's statements and the implementation of those
+statments in code.
+
+Take a look at the login feature:
+
+``` ruby
+Feature: Login
+  In order to log into my app
+  As my app's personnel
+  I want to put in my user name and password
+  
+  @firefox
+  Scenario: Log in
+    Given I enter my username
+    And I enter my password
+    When I press Continue
+    Then I should see the environment link 
+    And I select the environment link
+```
+
 **Change the rest of the defaults if needed**
 
 ``` ruby
 # change to :test or :dev or :local
 $currentOpt=:local
 
-# the below server name will either be in the format of 'MYSERVERNAME' or 'MYSERVERNAME\DATABASEINSTANCE'
-# depending on how your sql servr is set up
+# the below server name will either be in the format of 'MYSERVERNAME' 
+# or 'MYSERVERNAME\DATABASEINSTANCE' depending on how your sql servr is set up
 workingDBServerOpt={:dev => 'MYDEVDATABASESERVER',
                     :test => 'MYTESTDATABASESERVER',
                     :local => 'MYLOCALDATABASE'}
