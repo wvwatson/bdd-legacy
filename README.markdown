@@ -158,7 +158,7 @@ gem which capybara
 ```
 
 which will give you the capybara directory on your machine.  The driver.rb file will be 
-in <directory>\lib\capybara\spec
+in (directory)\lib\capybara\spec
 
 **Change the rest of the defaults if needed**
 
