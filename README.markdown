@@ -41,6 +41,8 @@ And yes, that is code.  Therefore, **a feature is executable documentation**
 **Requirements**
   
 You must have [ruby](http://www.ruby-lang.org/en/downloads/) and [rubygems](http://rubyforge.org/frs/?group_id=126)
+This gem is made specifically for use on windows (it uses win32ole).  
+The sql server parts will not work on mac or linux.
 
 **Installation**
 
@@ -93,6 +95,32 @@ These will get put into the fields previously mentioned
 $workingAppUser='myapplicationusername'
 $workingAppPW='myapplicationpw'
 ```
+**Work flow**
+
+Your normal workflow will start with writing a feature with scenarios similar to the following:
+
+```ruby
+Feature: Home Page
+  In order to work in my app
+  As my app's personnel
+  I need to land on the home page
+  
+  Scenario: Land on the hope page
+    Given I am logged in
+    Then I should see "My App's greeting"    
+    And I should see "Something else that I want to check"
+````
+The feature relates to something to what the user wants to be able to do in your application.
+The Scenario actually manipulates your application.
+If you were to add the above feature into a 'homepage.feature' file you could
+then run the following command:
+
+````
+cucumber features
+````
+
+which would then give you the following output, since you don't have any *steps* defined yet.
+
 
 **Change the rest of the defaults if needed**
 

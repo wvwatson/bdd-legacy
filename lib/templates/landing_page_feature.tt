@@ -4,10 +4,10 @@ Feature: Landing Page
   I need to land on the home page
   
   @firefox
-  Scenario: Land on the landing page page
+  Scenario: Land on the landing page
     Given I am logged in
     Then I should see "My App's greeting"    
-    And I should see "Something Else that I want to check"
+    And I should see "Something else that I want to check"
     
   @firefox  @sql_insert_example
   Scenario: Landing page messages
