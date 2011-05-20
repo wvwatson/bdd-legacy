@@ -160,6 +160,14 @@ gem which capybara
 which will give you the capybara directory on your machine.  The driver.rb file will be 
 in (directory)\lib\capybara\spec
 
+Again, your complete workflow will be:
+
+1. Defining a feature (or scenario)**
+2. Copying and pasting the generated scenario matcher into a step defintion file**
+3. Adding the (capybara) code to the step definition
+4. Running the test with the 'cucumber features' command until the tests are green
+5. Start over
+
 **Change the rest of the defaults if needed**
 
 ``` ruby
