@@ -160,7 +160,7 @@ gem which capybara
 which will give you the capybara directory on your machine.  The driver.rb file will be 
 in (directory)\lib\capybara\spec
 
-Again, your complete workflow will be:
+**Complete workflow**
 
 1. Defining a feature (or scenario)
 2. Copying and pasting the generated scenario matcher into a step defintion file
