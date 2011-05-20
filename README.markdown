@@ -168,31 +168,4 @@ in (directory)\lib\capybara\spec
 4. Running the test with the 'cucumber features' command until the tests are green
 5. Start over
 
-**Change the rest of the defaults if needed**
-
-``` ruby
-# change to :test or :dev or :local
-$currentOpt=:local
-
-# the below server name will either be in the format of 'MYSERVERNAME' 
-# or 'MYSERVERNAME\DATABASEINSTANCE' depending on how your sql servr is set up
-workingDBServerOpt={:dev => 'MYDEVDATABASESERVER',
-                    :test => 'MYTESTDATABASESERVER',
-                    :local => 'MYLOCALDATABASE'}
-workingDBOpt={:dev => 'devdb',
-           :test => 'tstdb',
-           :local => 'devdb'}
-# if you have a list of links after logging in with a single sign on account,
-# you may also have a page of separate links for local/dev/test/prod etc           
-workingEnvLinkOpt = {:local => 'Welcome',
-                    :dev => 'Welcome',
-                    :test => 'Welcome'}  
-                    
-$workingDBServer = workingDBServerOpt[$currentOpt]
-$workingDB = workingDBOpt[$currentOpt]
-$workingAppUser='myapplicationusername'
-$workingAppPW='myapplicationpw'           
-$workingDBUser='mydatabaseusername'
-$workingDBPW='mydatabasepw'
-```
 
