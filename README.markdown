@@ -110,7 +110,7 @@ Feature: Home Page
     Then I should see "My Apps greeting"    
     And I should see "Something else that I want to check"
 ````
-The feature relates to something to what the user wants to be able to do in your application.
+The feature relates to something the user wants to be able to do in your application.
 The Scenario actually manipulates your application.
 If you were to add the above feature into a 'homepage.feature' file you could
 then run the following command:
