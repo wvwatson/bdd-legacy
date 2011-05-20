@@ -102,12 +102,12 @@ Your normal workflow will start with writing a feature with scenarios similar to
 ```ruby
 Feature: Home Page
   In order to work in my app
-  As my app's personnel
+  As my apps personnel
   I need to land on the home page
   
   Scenario: Land on the hope page
     Given I am logged in
-    Then I should see "My App's greeting"    
+    Then I should see "My Apps greeting"    
     And I should see "Something else that I want to check"
 ````
 The feature relates to something to what the user wants to be able to do in your application.
