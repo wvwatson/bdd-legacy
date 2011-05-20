@@ -119,8 +119,26 @@ then run the following command:
 cucumber features
 ````
 
-which would then give you the following output, since you don't have any *steps* defined yet.
+which would then give you the following output:
 
+``` ruby
+Given /^I am logged in to my app$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see something like "([^"]*)"$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I press Continue$/ do
+  pending # express the regexp above with the code you wish you had
+end
+```
+
+Which you then cut and paste into a step definition file:
+
+``` ruby
+```
 
 **Change the rest of the defaults if needed**
 
