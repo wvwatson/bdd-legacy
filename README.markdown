@@ -102,15 +102,15 @@ Your normal workflow will start with writing a feature with scenarios similar to
 ```ruby
 Feature: Home Page
   In order to work in my app
-  As my app's personnel
+  As my apps personnel
   I need to land on the home page
   
   Scenario: Land on the hope page
     Given I am logged in
-    Then I should see "My App's greeting"    
+    Then I should see "My Apps greeting"    
     And I should see "Something else that I want to check"
 ````
-The feature relates to something to what the user wants to be able to do in your application.
+The feature relates to something the user wants to be able to do in your application.
 The Scenario actually manipulates your application.
 If you were to add the above feature into a 'homepage.feature' file you could
 then run the following command:
@@ -119,8 +119,26 @@ then run the following command:
 cucumber features
 ````
 
-which would then give you the following output, since you don't have any *steps* defined yet.
+which would then give you the following output:
 
+``` ruby
+Given /^I am logged in to my app$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see something like "([^"]*)"$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I press Continue$/ do
+  pending # express the regexp above with the code you wish you had
+end
+```
+
+Which you then cut and paste into a step definition file:
+
+``` ruby
+```
 
 **Change the rest of the defaults if needed**
 
