@@ -135,10 +135,30 @@ When /^I press Continue$/ do
 end
 ```
 
-Which you then cut and paste into a step definition file:
+Which you then cut and paste into a step definition file.  
+Something like \features\step_definitions\home_page_steps.rb would work
+
+**Step Definitions**
+
+In the step definitions file, you will be using [Capybara](https://github.com/jnicklas/capybara)
+commands to call your legacy application. The capybara command for one of the 
+previous steps looks like this:
 
 ``` ruby
+Then /^I should see something like "([^"]*)"$/ do |arg1|
+  page.should have_content(arg1)
+end  
 ```
+
+You can find examples of the capybara commands by looking at the specs in the driver.rb file.
+To find the file run the following command
+
+``` ruby
+gem which capybara
+```
+
+which will give you the capybara directory on your machine.  The driver.rb file will be 
+in <directory>\lib\capybara\spec
 
 **Change the rest of the defaults if needed**
 
