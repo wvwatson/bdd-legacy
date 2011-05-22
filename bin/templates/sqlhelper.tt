@@ -1,0 +1,40 @@
+require 'sqlserver'
+
+# example use
+# insertsql||=[]
+# insertsql[0]= <<-eos
+          # INSERT INTO [Messages]
+         # ([Message])
+   # VALUES
+         # ('Do your hours')          
+   # eos     
+# insertsql[1]=  'select @@IDENTITY'
+# results, field_lists = SqlServer.helperqueries(insertsql)
+# @insertID = results[1][0][0] #get *first* result from *second* query
+
+class SqlServer
+
+  #multiple statements need an array
+  #don't error out on statements that don't return anything
+  def self.helperqueries(sql=[])
+    return [],[] if sql.empty?  
+    
+    db = SqlServer.new($workingDBServer, $workingDBUser, $workingDBPW)    
+    db.open($workingDB)     
+    data, field_lists = db.queries(sql)
+    db.close
+    return data, field_lists
+  end
+  
+  
+  def self.helperquery(sql)
+    db = SqlServer.new($workingDBServer, $workingDBUser, $workingDBPW)       
+    db.open($workingDB)      
+    db.query(sql)
+    field_names = db.fields
+    data = db.data
+    db.close
+    return data, field_names
+  end
+end
+

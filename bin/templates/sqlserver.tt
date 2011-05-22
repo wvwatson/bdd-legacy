@@ -1,0 +1,118 @@
+require 'win32ole' if $isWindows
+
+# example use
+# db = SqlServer.new
+# db.open
+# db.query("SELECT PLAYER FROM PLAYERS WHERE TEAM = 'REDS';")
+# field_names = db.fields
+# players = db.data
+# db.close
+
+class SqlServer
+
+  # This class manages database connection and queries
+  attr_accessor :connection, :data, :fields
+	attr_writer :username, :password
+
+  def initialize(host, username = 'sa', password='')
+    @connection = nil
+    @data = nil
+    @host = host
+    @username = username
+    @password = password
+  end
+
+  def open(database)
+      # Open ADO connection to the SQL Server database
+      connection_string =  "Provider=SQLOLEDB.1;"
+      connection_string << "Persist Security Info=False;"
+      connection_string << "User ID=#{@username};"
+      connection_string << "password=#{@password};"
+      connection_string << "Initial Catalog=#{database};"
+      connection_string << "Data Source=#{@host};"
+      connection_string << "Network Library=dbmssocn"
+      @connection = WIN32OLE.new('ADODB.Connection')
+      @connection.Open(connection_string)
+  end
+
+  def queries(sql=[])
+    # debugger
+    return [],[] if sql.empty?
+    
+    results ||=[]
+    field_lists ||=[]
+    # debugger
+    sql.each do |s|
+      result, fields = query_field_data(s)
+      results << result
+      field_lists << fields
+    end
+    return results, field_lists
+  end
+
+  
+  def query_field_data(sql)
+    # Create an instance of an ADO Recordset
+    recordset = WIN32OLE.new('ADODB.Recordset')
+    # Open the recordset, using an SQL statement and the
+    # existing ADO connection
+    recordset.Open(sql, @connection)
+    # Create and populate an array of field names
+    # debugger
+    fields = []
+    recordset.Fields.each do |field|
+        fields << field.Name
+    end
+    begin
+        # Move to the first record/row, if any exist
+        recordset.MoveFirst
+        # Grab all records
+        data = recordset.GetRows
+        # record only needs to be closed if movefirst doesn't cause an error
+        recordset.Close 
+    rescue
+        data = []
+    end
+
+    # An ADO Recordset's GetRows method returns an array 
+    # of columns, so we'll use the transpose method to 
+    # convert it to an array of rows
+    data = data.transpose
+    return data, fields
+  end
+  
+  
+  def query(sql)
+    # Create an instance of an ADO Recordset
+    recordset = WIN32OLE.new('ADODB.Recordset')
+    # Open the recordset, using an SQL statement and the
+    # existing ADO connection
+    recordset.Open(sql, @connection)
+    # Create and populate an array of field names
+    # debugger
+    @fields ||=[]
+    recordset.Fields.each do |field|
+        @fields << field.Name
+    end
+    begin
+        # Move to the first record/row, if any exist
+        recordset.MoveFirst
+        # Grab all records
+        @data = recordset.GetRows
+        # record only needs to be closed if movefirst doesn't cause an error
+        recordset.Close         
+    rescue
+        @data = []
+    end
+    # An ADO Recordset's GetRows method returns an array 
+    # of columns, so we'll use the transpose method to 
+    # convert it to an array of rows
+    @data = @data.transpose
+    return @data, @fields
+  end
+
+  def close
+      @connection.Close
+  end
+end
+
