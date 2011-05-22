@@ -163,9 +163,45 @@ in (directory)\lib\capybara\spec
 **Complete workflow**
 
 1. Defining a feature (or scenario)
-2. Copying and pasting the generated scenario matcher into a step defintion file
+2. Copying and pasting the generated scenario matcher into a step definition file
 3. Adding the (capybara) code to the step definition
 4. Running the test with the 'cucumber features' command until the tests are green
 5. Start over
+
+**firefox vs ie***
+The firefox webdriver is fast compared to Internet Explorer so I would recommend you use firefox for your testing.  
+In some cases if you are on windows you may want to test your application in IE (maybe your application only works in IE).
+In order to this you can use a tag.  Using an IE tag on a feature is done like so:
+
+``` ruby
+@ie
+Scenario: Log in
+  Given I enter my username
+  And I enter my password
+  When I press "Continue"
+  Then I should see the environment link 
+  And I select the environment link
+```
+
+Firefox is done the same way. 
+
+``` ruby 
+@firfox
+Scenario: Log in
+  Given I enter my username
+  And I enter my password
+  When I press "Continue"
+  Then I should see the environment link 
+  And I select the environment link
+```
+
+When running cucumber you can specify to run features for ie or firefox (or both)
+
+```
+cucumber features --tags @firefox
+cucumber features --tags @ie
+cucumber features --tags @ie,@firefox
+```
+`
 
 
