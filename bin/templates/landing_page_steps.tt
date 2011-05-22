@@ -1,5 +1,5 @@
 After('@sql_insert_example') do |s|
-  delete_message
+  delete_message if isWindows
 end
 
 # This is an example.  If you need to do setup and teardown data in your database
@@ -25,6 +25,6 @@ def delete_message
 end
 
 Given /^I have a message that says "([^"]*)" waiting for me$/ do |arg1|
-  insert_message
+  insert_message if isWindows
 end
 
