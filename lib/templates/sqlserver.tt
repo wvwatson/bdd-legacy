@@ -1,4 +1,4 @@
-require 'win32ole'
+require 'win32ole' if $isWindows
 
 # example use
 # db = SqlServer.new
