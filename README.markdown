@@ -41,8 +41,8 @@ And yes, that is code.  Therefore, **a feature is executable documentation**
 **Requirements**
   
 You must have [ruby](http://www.ruby-lang.org/en/downloads/) and [rubygems](http://rubyforge.org/frs/?group_id=126)
-This gem is made specifically for use on windows (it uses win32ole).  
-The sql server parts will not work on mac or linux.
+The sql server helpers in this gem use the win32ole which is only available on windows.  Everything else will
+work on mac or linux.
 
 **Installation**
 
