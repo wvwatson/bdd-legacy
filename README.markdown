@@ -13,7 +13,7 @@ documentation I know of in the form of *executable documentation*.
 Well with executable documentation you could [cut and paste it](http://www.literateprogramming.com/quotes_ad.html) 
 in an email and send it to a business expert.  This means that there would be less 
 opportunity for something to get lost in the translation between your expert's statements 
-and the implementation of those statments in code.
+and the implementation of those statements in code.
 
 Take a look at this example:
 
@@ -187,7 +187,7 @@ Scenario: Log in
 Firefox is done the same way. 
 
 ``` ruby 
-@firfox
+@firefox
 Scenario: Log in
   Given I enter my username
   And I enter my password
@@ -203,6 +203,6 @@ cucumber features --tags @firefox
 cucumber features --tags @ie
 cucumber features --tags @ie,@firefox
 ```
-`
+
 
 
