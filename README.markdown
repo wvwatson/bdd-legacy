@@ -169,6 +169,7 @@ in (directory)\lib\capybara\spec
 5. Start over
 
 **Firefox vs Internet Explorer**
+
 The firefox webdriver is fast compared to Internet Explorer so I would recommend you use firefox for your testing.  
 In some cases if you are on windows you may want to test your application in IE (maybe your application only works in IE).
 In order to this you can use a tag.  Using an IE tag on a feature is done like so:
