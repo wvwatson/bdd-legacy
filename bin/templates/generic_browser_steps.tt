@@ -13,7 +13,7 @@ end
 
 Before('@ie') do
   Capybara.app_host = $workingAppHostLink 
-  Capybara.current_driver = :selenium_ie
+  Capybara.current_driver = :selenium_ie if $isWindows
   visit $workingAppLoginRoute
 end
 

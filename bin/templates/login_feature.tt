@@ -7,7 +7,7 @@ Feature: Login
   Scenario: Log in
     Given I enter my username
     And I enter my password
-    When I press Continue
+    When I press "Continue"
     Then I should see the environment link 
     And I select the environment link    
    
