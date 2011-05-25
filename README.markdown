@@ -28,8 +28,7 @@ Feature: Login
     Given I enter my username
     And I enter my password
     When I press Continue
-    Then I should see the environment link 
-    And I select the environment link
+    Then I should see "Welcome" 
 ```
 
 Even without any [further explanation](https://github.com/cucumber/cucumber/wiki/Gherkin), 
