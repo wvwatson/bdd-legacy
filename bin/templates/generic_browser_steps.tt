@@ -36,6 +36,11 @@ Then /^I select the link "([^"]*)"$/ do |arg1|
   click_link arg1
 end
 
+# force a link .. use if link not visible  (not visible links not supported yet for capybara)
+Given /^I navigate to the link for "([^"]*)"$/ do |arg1|
+  page.execute_script("document.location.href('#{arg1}')")
+  sleep 3.0
+end
 # sometimes only click_on works ...
 When /^I click on "([^"]*)"$/ do |arg1|
   click_on arg1
@@ -76,13 +81,21 @@ Then /^I should see "([^"]*)" in a dropdown$/ do |arg1|
   page.should have_xpath ("//option[text()='#{arg1}']")
 end
 
+Then /^I should see a "([^"]*)" button$/ do |arg1|
+  page.should have_button(arg1)
+end
+
+# sometimes this is slow and buggy so had to add sleeps
 Then /^I select "([^"]*)" from a dropdown$/ do |arg1|
-  # debugger
+  sleep 2.5
   myselect = page.find(:xpath, "//select[option[text()='#{arg1}']]")
+  sleep 1.5
   myoption = page.find(:xpath, "//option[text()='#{arg1}']")
   # select(myoption, :from => myselect)
   # select("#{arg1}")
+  sleep 1.5
   myoption.select_option
+  sleep 1.5
 end
 
 Then /^I select the text "([^"]*)"$/ do |arg1|
@@ -94,4 +107,12 @@ Then /^I should not see "([^"]*)" in a dropdown$/ do |arg1|
 end
 Then /^I enter '(\d+)' into the "([^"]*)" field$/ do |arg1, arg2|
   fill_in arg2, :with => arg1
+end
+
+Given /^I enter "([^"]*)" into the "([^"]*)" field$/ do |arg1, arg2|
+  fill_in arg2, :with => arg1
+end
+
+Given /^I refresh the page$/ do
+  visit(current_url)
 end
