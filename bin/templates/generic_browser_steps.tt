@@ -116,3 +116,17 @@ end
 Given /^I refresh the page$/ do
   visit(current_url)
 end
+
+# get sibling (img) of same row in a table and click on it.
+# modify to fit your needs
+# need to click on td element not img element (hence /.. at end of xpath)
+# also can't assign then click (!). need to call object directly on find (wtf)
+Given /^I click on the image in the "([^"]*)" row$/ do |arg1|
+  find(:xpath, "//img[../../td[*[text()='#{arg1}']]]/..").click
+end
+
+ 
+Then /^the value for "([^"]*)" in the "([^"]*)" row should not be empty$/ do |arg1, arg2|
+  myrow = page.find(:xpath, "//td[@id='#{arg1}' and ../td[*[text()='#{arg2}']]]")
+  myrow['value'].should_not == ""
+end
