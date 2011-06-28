@@ -63,10 +63,20 @@ Then /^within the "([^"]*)" window, I should see "([^"]*)"$/ do |arg1, arg2|
   page.within_window(arg1){page.should have_content(arg2)}
 end
 
+Then /^within the "([^"]*)" window, I click on "([^"]*)"$/ do |arg1, arg2|
+    page.within_window(arg1){click_on arg2}
+end
+
 Then /^within the "([^"]*)" window, I select "([^"]*)"$/ do |arg1, arg2|
   page.within_window(arg1) do 
     myelem = page.find(:xpath, "//*[@value='#{arg2}']")
     myelem.click
+  end
+end
+
+Then /^within the "([^"]*)" window, I select the "([^"]*)" row$/ do |arg1, arg2|
+  page.within_window(arg1) do 
+    page.find(:xpath, "//td[contains(.,'#{arg2}')]").click
   end
 end
 
@@ -99,8 +109,8 @@ Then /^I select "([^"]*)" from a dropdown$/ do |arg1|
 end
 
 Then /^I select the text "([^"]*)"$/ do |arg1|
-  myelem = page.find(:xpath, "//*[text()='#{arg1}']")
-  myelem.click
+  # .click right on the object works, afterwards doesn't ..
+  myelem = page.find(:xpath, "//*[text()='#{arg1}']").click
 end
 Then /^I should not see "([^"]*)" in a dropdown$/ do |arg1|
   page.should_not have_xpath ("//option[text()='#{arg1}']")
