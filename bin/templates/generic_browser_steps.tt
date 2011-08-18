@@ -80,6 +80,18 @@ Then /^within the "([^"]*)" window, I select the "([^"]*)" row$/ do |arg1, arg2|
   end
 end
 
+# get unnamed (last) popup window
+Then /^within that popup window, I should see "([^"]*)"$/ do |arg1|
+  steps %Q{
+    Then within the "" window, I should see "#{arg1}" 
+  }
+end
+
+Then /^within that popup window, I click on "([^"]*)"$/ do |arg1|
+  steps %Q{
+    Then within the "" window, I click on "#{arg1}"
+  }    
+end
 Then /^I should see "([^"]*)" in a field$/ do |arg1|
   page.should have_xpath("//*[@value='#{arg1}']")
 end
@@ -91,6 +103,9 @@ Then /^I should see "([^"]*)" in a dropdown$/ do |arg1|
   page.should have_xpath ("//option[text()='#{arg1}']")
 end
 
+Then /^I should see a dropdown that contains "([^"]*)"$/ do |arg1|
+  page.find(:xpath, "//option[contains(.,'#{arg1}')]")
+end
 Then /^I should see a "([^"]*)" button$/ do |arg1|
   page.should have_button(arg1)
 end
@@ -108,13 +123,39 @@ Then /^I select "([^"]*)" from a dropdown$/ do |arg1|
   sleep 1.5
 end
 
+Then /^I select "([^"]*)" from the "([^"]*)" dropdown$/ do |arg1, arg2|
+  sleep 2.5
+  myselect = page.find(:xpath, "//select[@name='#{arg2}'][option[text()='#{arg1}']]")
+  sleep 1.5
+  myoption = page.find(:xpath, "//option[text()='#{arg1}' and ../@name='#{arg2}']")
+  # select(myoption, :from => myselect)
+  # select("#{arg1}")
+  sleep 1.5
+  myoption.select_option
+  sleep 1.5
+end
+
+Then /^I should see "([^"]*)" in the "([^"]*)" dropdown$/ do |arg1, arg2|
+  page.should have_xpath ("//select[@name='#{arg2}'][option[text()='#{arg1}']]")
+end
+
 Then /^I select the text "([^"]*)"$/ do |arg1|
   # .click right on the object works, afterwards doesn't ..
   myelem = page.find(:xpath, "//*[text()='#{arg1}']").click
 end
+
+Then /^I select the row with "([^"]*)"$/ do |arg1|
+  page.find(:xpath, "//td[contains(.,'#{arg1}')]").click  
+end
+
 Then /^I should not see "([^"]*)" in a dropdown$/ do |arg1|
   page.should_not have_xpath ("//option[text()='#{arg1}']")
 end
+
+Then /^I wait '(\d+)' seconds$/ do |arg1|
+  sleep arg1
+end
+
 Then /^I enter '(\d+)' into the "([^"]*)" field$/ do |arg1, arg2|
   fill_in arg2, :with => arg1
 end
