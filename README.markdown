@@ -104,7 +104,7 @@ Feature: Home Page
   As my apps personnel
   I need to land on the home page
   
-  Scenario: Land on the hope page
+  Scenario: Land on the home page
     Given I am logged in
     Then I should see "My Apps greeting"    
     And I should see "Something else that I want to check"
